@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<title>
+    {{word}} @ Simple Duden  
+  </title>
+  <link href="static/style.css" rel="stylesheet"></link>
+</head>
+
+  <body>
+    <header>
+    <span class="title"><a href="/" title="Home">Simple Duden ></a></span>
+    <form action="/search" method="get">
+        <input placeholder='case sensative' required name="word"/>
+        <button>Search!</button>
+      </form>
+    </header>
+    <main>
+      <div id="error">Multiple results for the word <span class="searched"><a href="https://www.duden.de/suchen/dudenonline/{{word}}" target="blank" title="search result in duden">{{word}}</a></span></div>
+      <div class="center">
+        {% for keyword_url in keywords_url %}
+          <li class="multiple"><a href="search?word={{keyword_url}}"  title="{{keyword_url}}">{{keyword_url}}</a></li>
+        {% endfor %}
+      </div>
+    </main>
+    {% if words %}
+    <div id="past">
+      <h4>words found:</h4>
+      <ul class="past">
+      {% for item in words %}
+        <li><a href="search?word={{ item }}">{{ item }}</a></li>
+      {% endfor %}
+      </ul>
+    </div>
+{% endif %}
+  </body>
+</html>

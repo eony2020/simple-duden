@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<title>
+    Simple Duden
+  </title>
+  <link href="static/style.css" rel="stylesheet"></link>
+</head>
+
+  <body>
+    <header>
+    <span class="title"><a href="/" title="Home">Simple Duden ></a></span>
+    <form action="/search" method="get">
+        <input placeholder='case sensative' required name="word"/>
+        <button>Search!</button>
+      </form>
+    </header>
+
+{% if words %}
+    <div id="past">
+      <h4>words found:</h4>
+      <ul class="past">
+      {% for item in words %}
+        <li><a href="search?word={{ item }}">{{ item }}</a></li>
+      {% endfor %}
+      </ul>
+    </div>
+{% endif %}
+
+  </body>
+</html>

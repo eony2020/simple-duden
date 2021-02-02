@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>{{word}} @ Simple Duden </title>
+  <link href="static/style.css" rel="stylesheet"></link>
+</head>
+
+<body>
+  <header>
+    <span class="title"><a href="/" title="Home">Simple Duden ></a></span>
+    <form action="/search" method="get">
+        <input placeholder='case sensative' required name="word"/>
+        <button>Search!</button>
+      </form>    
+  </header>
+ 
+  <main>
+     <div id="error">Search result for <span class="searched"><a href="https://www.duden.de/rechtschreibung/{{word}}" target="blank" title="{{word}} in Duden">{{word}}</a></span></div>
+    <div class="text">
+      <ol>
+    {% for text in texts %}
+      <li class="meaning">
+      {{text}}
+      </li>
+      
+    {% endfor %}
+    </ol>
+    </div>
+  </main>
+  {% if words %}
+    <div id="past">
+      <h4>words found:</h4>
+      <ul class="past">
+      {% for item in words %}
+        <li><a href="search?word={{ item }}">{{ item }}</a></li>
+      {% endfor %}
+      </ul>
+    </div>
+{% endif %}
+  <footer>
+      <h5>Light <a href="https://www.duden.de/" target="blank">Duden</a> with a word meaning only. Copyright by Duden.</h5>
+  </footer>
+</body>
+
+</html>
