@@ -97,4 +97,4 @@ def multiple():
 def single():
   return redirect("/")
 
-app.run(host="0.0.0.0") 
+app.run(host="eony.pythonanywhere.com") 
